@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ACORD PDF Generator</title>
+</head>
+<body>
+
+<h2>Automobile Loss Notice Form</h2>
+
+<form id="form">
+  <label>Full Name:</label><br>
+  <input type="text" id="name" required><br><br>
+
+  <label>Date of Birth:</label><br>
+  <input type="text" id="dob" required><br><br>
+
+  <label>Policy Number:</label><br>
+  <input type="text" id="policy" required><br><br>
+
+  <button type="submit">Generate PDF</button>
+</form>
+
+<script>
+document.getElementById("form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const response = await fetch("/generate-pdf", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name: document.getElementById("name").value,
+      dob: document.getElementById("dob").value,
+      policyNumber: document.getElementById("policy").value
+    })
+  });
+
+  const blob = await response.blob();
+  const url = window.URL.createObjectURL(blob);
+  window.open(url);
+});
+</script>
+
+</body>
+</html>

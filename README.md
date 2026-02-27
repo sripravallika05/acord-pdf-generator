@@ -1,6 +1,6 @@
 # ACORD PDF Generator 🚗📄
 
-A Node.js web application that dynamically fills and generates the ACORD Automobile Loss Notice PDF form using user input.
+A Node.js web application that dynamically fills and generates the ACORD Automobile Loss Notice PDF form using user input
 
 ---
 
